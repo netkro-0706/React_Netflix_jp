@@ -27,8 +27,8 @@ function getDetail(movie_id) {
                 type:"GET_MOVIE_DETAIL",
                 payload: {
                     movieDetail : movieDetail.data,
-                    movieReview : movieReview.data.result,
-                    movieRecommend : movieRecommend.data.result,
+                    movieReview : movieReview.data,
+                    movieRecommend : movieRecommend.data,
                 }
             });
             dispatch({ type: "LOAD_END" });

@@ -1,8 +1,16 @@
 import React from 'react'
+import { Container } from 'react-bootstrap';
+import MovieCard from './MovieCard';
 
-const MovieDetailRecommend = () => {
+const MovieDetailRecommend = ({recommendInfo}) => {
+
+  console.log("recommendInfo", recommendInfo);
   return (
-    <div>MovieDetailRecommend</div>
+    <Container className='recommend_wrap'>
+      {recommendInfo.results?.map((item)=>(
+        <MovieCard item={item}/>
+      ))}
+    </Container>
   )
 }
 

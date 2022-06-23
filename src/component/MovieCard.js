@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux'
 
 const MovieCard = ({ item }) => {
 
+    console.log("MovieCard item", item);
+
     const { genreList } = useSelector((state) => state.movie);
 
     let navigate = useNavigate();
@@ -17,7 +19,7 @@ const MovieCard = ({ item }) => {
         <div className='card'
             style={{
                 backgroundImage:
-                    "url(" + `https://www.themoviedb.org/t/p/w500_and_h282_face/${item.poster_path}` + ")"
+                    "url(" + `https://www.themoviedb.org/t/p/w500_and_h282_face/${item.backdrop_path}` + ")"
             }}
             onClick={goToDetail}>
 
@@ -31,7 +33,7 @@ const MovieCard = ({ item }) => {
                 </div>
                 <div>
                     <span>{item.vote_average}</span>
-                    <span>{item.adult ? "R-rated" : "Under 18"}</span>
+                    <span className='movie_adult'>{item.adult ? "R-rated" : "Under 18"}</span>
                 </div>
             </div>
 

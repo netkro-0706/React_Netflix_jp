@@ -5,7 +5,6 @@ import MovieCard from './MovieCard';
 
 const MovieSlide = ({ movies }) => {
 
-
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.

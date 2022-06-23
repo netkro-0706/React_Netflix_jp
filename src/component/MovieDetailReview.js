@@ -1,8 +1,20 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
-const MovieDetailReview = () => {
+const MovieDetailReview = ({ reviewInfo }) => {
+
+  //console.log("reviewInfo", reviewInfo.results);
+
   return (
-    <div>MovieDetailReview</div>
+    <Container className='review_wrap'>
+      {reviewInfo.results?.map((item)=>(
+        <div className='review_list'>
+          <h4>{item.author}</h4>
+          <p>{item.content}</p>
+        </div>
+      ))}
+      
+    </Container>
   )
 }
 

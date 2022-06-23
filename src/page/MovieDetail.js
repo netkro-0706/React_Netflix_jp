@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { movieDetailAction } from '../redux/action/movieDetailAction';
@@ -10,14 +10,13 @@ import { ClipLoader } from 'react-spinners';
 const MovieDetail = () => {
 
   const dispatch = useDispatch();
+  let [changeButton, setChangeButton] = useState(true);
   let { movie_id } = useParams();
   const { movieDetail, movieReview, movieRecommend } = useSelector((state) => state.movieDetail);
   const { genreList } = useSelector((state) => state.movie);
   let loading = useSelector((state) => state.load.loading);
 
-  console.log("dd movieDetail", movieDetail);
-
-
+  //console.log("detail api", movieReview);
 
   useEffect(() => {
     dispatch(movieDetailAction.getDetail(movie_id));
@@ -33,8 +32,28 @@ const MovieDetail = () => {
     return (
       <div>
         <MovieDetailInfo detailInfo={movieDetail} genreList={genreList} />
-        <MovieDetailReview reviewInfo={movieReview} />
-        <MovieDetailRecommend recommendInfo={movieRecommend} />
+        <div className='detail_changebutton'>
+          <button className='change_button' onClick={() => setChangeButton(true)}
+            style={{
+              backgroundColor: changeButton ? "#cc0000" : "white",
+              color: changeButton ? "white" : "black"
+            }}>REVIEWS(0)</button>
+          <button className='change_button' onClick={() => setChangeButton(false)}
+            style={{
+              backgroundColor: changeButton ? "white" : "#cc0000",
+              color: changeButton ? "black" : "white"
+            }}>RELATED MOVIES(0)</button>
+        </div>
+        {changeButton
+          ? (
+            <div>
+              <MovieDetailReview reviewInfo={movieReview} />
+            </div>
+          ) : (
+            <div>
+              <MovieDetailRecommend recommendInfo={movieRecommend} />
+            </div>
+          )}
       </div>
     )
   }
