@@ -37,12 +37,16 @@ const MovieDetail = () => {
             style={{
               backgroundColor: changeButton ? "#cc0000" : "white",
               color: changeButton ? "white" : "black"
-            }}>REVIEWS(0)</button>
+            }}>
+            REVIEWS ({movieReview.results?.length})
+          </button>
           <button className='change_button' onClick={() => setChangeButton(false)}
             style={{
               backgroundColor: changeButton ? "white" : "#cc0000",
               color: changeButton ? "black" : "white"
-            }}>RELATED MOVIES(0)</button>
+            }}>
+            RELATED MOVIES ({movieRecommend.results?.length})
+          </button>
         </div>
         {changeButton
           ? (

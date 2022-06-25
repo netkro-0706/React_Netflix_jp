@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 import { Badge, Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faFilm, faHeart, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faImdb } from '@fortawesome/free-brands-svg-icons';
+import MovieDetailTrailerModal from './MovieDetailTrailerModal';
 
 const MovieDetailInfo = ({ detailInfo, genreList }) => {
 
     console.log("detailInfo", detailInfo);
 
     let [bgColor, setBgColor] = useState("white");
+    const [modalShow, setModalShow] = React.useState(false);
 
     let putFav = (event) => {
         bgColor == "white" ? setBgColor("#dd0000") : setBgColor("white");
     }
 
+    
     return (
         <Container className='info_all_wrap'>
             <Row>
@@ -30,8 +33,8 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
                     <h1 className='info_title'>{detailInfo.title}</h1>
                     <h3 className='info_tagline'>{detailInfo.tagline}</h3>
                     <div className='info_social'>
-                        <FontAwesomeIcon icon={faImdb} className="imdb_icon"/><span>{detailInfo.vote_average}</span>
-                        <FontAwesomeIcon icon={faUsers} className="users_icon"/><span>{detailInfo.popularity}</span>
+                        <FontAwesomeIcon icon={faImdb} className="imdb_icon" /><span>{detailInfo.vote_average}</span>
+                        <FontAwesomeIcon icon={faUsers} className="users_icon" /><span>{detailInfo.popularity}</span>
                         <span className='movie_adult'>{detailInfo.adult ? "R-rated" : "Under 18"}</span>
                     </div>
                     <div className='info_overview'>
@@ -46,10 +49,17 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
                         </ul>
                     </div>
                     <div>
-                        Watch Trailer
+                        <span className='info_trailer' onClick={() => setModalShow(true)}>
+                            <FontAwesomeIcon icon={faFilm} /> Watch Trailer
+                        </span>
                     </div>
+                    <MovieDetailTrailerModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
                     <div>
-                        <button className='info_fav' style={{backgroundColor:bgColor}} onClick={putFav}>♥</button>
+                        <button className='info_fav' style={{ backgroundColor: bgColor }} onClick={putFav}>
+                            <FontAwesomeIcon icon={faHeart}/></button>
                     </div>
                 </Col>
             </Row>

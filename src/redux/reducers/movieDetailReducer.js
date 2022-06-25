@@ -2,6 +2,7 @@ let initialState = {
     movieDetail: {},
     movieReview: {},
     movieRecommend: {},
+    movieTrailer: {},
 }
 
 function movieDetailReducer(state = initialState, action) {
@@ -12,7 +13,8 @@ function movieDetailReducer(state = initialState, action) {
                 ...state,
                 movieDetail: payload.movieDetail,
                 movieReview: payload.movieReview,
-                movieRecommend: payload.movieRecommend
+                movieRecommend: payload.movieRecommend,
+                movieTrailer: payload.movieTrailer,
             }
         default:
             return {

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 const MovieCard = ({ item }) => {
 
-    console.log("MovieCard item", item);
+    //console.log("MovieCard item", item);
 
     const { genreList } = useSelector((state) => state.movie);
 
@@ -16,7 +16,7 @@ const MovieCard = ({ item }) => {
     }
 
     return (
-        <div className='card'
+        <div className='card home_card'
             style={{
                 backgroundImage:
                     "url(" + `https://www.themoviedb.org/t/p/w500_and_h282_face/${item.backdrop_path}` + ")"
