@@ -220,10 +220,117 @@ body {
 }
 
 /* Movies */
+.remote_wrap{
+    width: 300px;
+    margin-top: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+.remote_wrap .top{
+    display: flex;
+    height: 50px;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+.remote_wrap .under{
+    border-top: 2px solid white;
+}
+
+.filter_wrap_close{
+    height: 50px;
+}
+.filter_under_close{
+    display: none;
+}
+/* MoviesSort.js */
+.sort_wrap{
+    height: 150px;
+}
+.sort_under{
+    padding-top: 20px;
+    text-align: center;
+}
+.sort_wrap_close{
+    height: 50px;
+}
+.sort_under_close{
+    display: none;
+}
+
+/* MoviesFilter.js */
+.year_filter{
+    height: 100px;
+    text-align: center;
+    padding-top: 17px;
+}
+.score_filter{
+    height: 100px;
+    text-align: center;
+    padding-top: 17px;
+}
+.filter_range{
+    margin: auto;
+}
+
+.genres_filter{
+    height: 560px;
+    padding-top: 17px;
+}
+.genres_filter div{
+    text-align: center;
+    font-size: larger;
+}
+.genres_button{
+    height: 50px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 15px;
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(to right, red, black);
+}
+
+
+.movies_Card_List{
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.movies_Pagination_wrap{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.pagination{
+    height: 27px;
+    margin-top: 20px;
+}
+.pagination li{
+    width: 30px;
+    margin-right: 5px;
+    text-align: center;
+    background-color: black;
+    border: 1px solid red;
+    border-radius: 10px;
+}
+.pagination a{
+    text-decoration: none;
+    color: red;
+    font-weight: 600;
+
+}
+
+
+
 /* MoviesCard.js */
 .movies_card{
     width: 300px;
-    height: 500px;
+    height: 540px;
+    margin-top: 20px;
+    margin-right: 40px;
     background-size: cover;
     background-repeat: no-repeat;
     transition: all 0.1s linear;
