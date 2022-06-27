@@ -2,6 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Badge } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faImdb } from '@fortawesome/free-brands-svg-icons';
 
 const MovieCard = ({ item }) => {
 
@@ -25,14 +28,15 @@ const MovieCard = ({ item }) => {
 
             <div className='overlay'>
                 <h1>{item.title}</h1>
-                <div>
+                <div className='home_genre_wrap'>
                     {item.genre_ids.map((id) => (
-                        <Badge bg="danger">{genreList.find((item) => item.id === id).name}</Badge>
+                        <Badge className='home_genre' bg="danger">{genreList.find((item) => item.id === id).name}</Badge>
 
                     ))}
                 </div>
-                <div>
-                    <span>{item.vote_average}</span>
+                <div className='home_social'>
+                    <span><FontAwesomeIcon icon={faImdb} className="imdb_icon" /> {item.vote_average}</span>
+                    <span><FontAwesomeIcon icon={faUsers} className="users_icon" /> {item.popularity}</span>
                     <span className='movie_adult'>{item.adult ? "R-rated" : "Under 18"}</span>
                 </div>
             </div>

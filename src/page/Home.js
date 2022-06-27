@@ -36,12 +36,19 @@ const Home = () => {
       <div>
         <Banner movie={popularMovies.results[0]} />
 
-        <h1>popular Movie</h1>
-        <MovieSlide movies={popularMovies} />
-        <h1>Top rated Movie</h1>
-        <MovieSlide movies={topRatedMovies} />
-        <h1>Upcoming Movie</h1>
-        <MovieSlide movies={upcomingMovies} />
+        <div className='home_movie_list'>
+          <h1>popular Movie</h1>
+          <MovieSlide movies={popularMovies} />
+        </div>
+        <div className='home_movie_list'>
+          <h1>Top rated Movie</h1>
+          <MovieSlide movies={topRatedMovies} />
+        </div>
+        <div className='home_movie_list'>
+          <h1>Upcoming Movie</h1>
+          <MovieSlide movies={upcomingMovies} />
+        </div>
+        <div className='last_list'></div>
 
       </div>
     )

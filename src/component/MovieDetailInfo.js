@@ -10,10 +10,10 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
     console.log("detailInfo", detailInfo);
 
     let [bgColor, setBgColor] = useState("white");
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
 
     let putFav = (event) => {
-        bgColor == "white" ? setBgColor("#dd0000") : setBgColor("white");
+        bgColor === "white" ? setBgColor("#dd0000") : setBgColor("white");
     }
 
     

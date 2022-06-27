@@ -42,6 +42,13 @@ body {
     z-index: 1;
 }
 
+.home_movie_list{
+    margin-bottom: 20px;
+}
+.last_list{
+    height: 200px;
+}
+
 .card {
     width: 300px;
     height: 160px;
@@ -52,6 +59,8 @@ body {
 }
 
 .overlay {
+    position: relative;
+    padding: 10px;
     opacity: 0;
     background: rgba(43, 41, 41, 0.9);
     width: 100%;
@@ -63,6 +72,18 @@ body {
 
 .card:hover .overlay {
     opacity: 1;
+}
+.home_genre_wrap{
+    margin-top: 10px;
+}
+.home_genre{
+    margin-right: 10px;
+}
+.home_social{
+    margin-top: 10px;
+}
+.home_social span{
+    margin-right: 10px;
 }
 
 .loader-wrap {
@@ -291,6 +312,37 @@ body {
     background: linear-gradient(to right, red, black);
 }
 
+/* MoviesCard.js */
+.movies_card .overlay{
+    position: relative;
+    opacity: 1;
+    padding: 20px;
+    background: linear-gradient(to right, black, transparent);
+}
+.movies_card_top{
+    display: flex;
+}
+.card_top_poster{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.card_top_text span{
+    color: rgb(152, 175, 228);
+}
+.movies_card_middle{
+    width: 60%;
+}
+.middle_genre{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.movies_card_bottom{
+    position: absolute;
+    bottom: 10px;
+}
+.card_bottom_social span{
+    margin-right: 10px;
+}
 
 .movies_Card_List{
     display: flex;
@@ -300,16 +352,17 @@ body {
 }
 
 .movies_Pagination_wrap{
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
 }
 .pagination{
     height: 27px;
     margin-top: 20px;
 }
 .pagination li{
-    width: 30px;
+    width: 50px;
     margin-right: 5px;
     text-align: center;
     background-color: black;
@@ -327,13 +380,14 @@ body {
 
 /* MoviesCard.js */
 .movies_card{
-    width: 300px;
+    width: 320px;
     height: 540px;
     margin-top: 20px;
     margin-right: 40px;
     background-size: cover;
     background-repeat: no-repeat;
     transition: all 0.1s linear;
+    border: none;
 }
 .movies_card:hover{
     transform: scale(1.05);
