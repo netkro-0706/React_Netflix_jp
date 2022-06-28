@@ -5,8 +5,6 @@ import Banner from '../component/Banner'
 import MovieSlide from '../component/MovieSlide'
 import ClipLoader from "react-spinners/ClipLoader";
 
-
-
 const Home = () => {
 
   const dispatch = useDispatch();
@@ -20,11 +18,6 @@ const Home = () => {
     dispatch(movieAction.getMovies());
   }, []);
 
-  //loading이 true면 loading스피너를 보여주고
-  //loading이 false면 데이터를 보여준다
-
-  //true: 데이터 도착 전
-  //false: 데이터 도착 후, 또는 에러시
   if (loading) {
     return (
       <div className='loader-wrap'>

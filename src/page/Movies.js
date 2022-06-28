@@ -64,8 +64,6 @@ const Movies = () => {
   useEffect(() => {
     getMovieData(activePage);
     doSort();
-    console.log("movie", movieList);
-    console.log("year", year_value);
   }, [activePage, text, selected_sort, year_value, genre_value])
 
   return (
@@ -99,11 +97,6 @@ const Movies = () => {
 
                 ))
               }
-
-              {/* {movieList?.map((movie) => (
-                     <MoviesCard cardInfo={movie} />
-                   ))
-                 } */}
               <div className='movies_Pagination_wrap'>
                 <Pagination
                   activePage={activePage}
