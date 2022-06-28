@@ -16,6 +16,11 @@ const Movies = () => {
   let [activePage, setActivePage] = useState(1);
   let [popMovie, setPopMovie] = useState();
   let loading = useSelector((state) => state.load.loading);
+  let { selected_sort } = useSelector((state) => state.sort);
+  let [sort_commend, setSort_commend] = useState(selected_sort.split(' ')[0]);
+  let [movieList, setMovieList] = useState();
+  let { year_value, genre_value } = useSelector((state) => state.filter);
+  let { genreList } = useSelector((state) => state.movie)
 
   function handlePageChange(event) {
     setActivePage(event);
@@ -33,19 +38,33 @@ const Movies = () => {
       }
 
       setPopMovie(getData.data);
+
       dispatch({ type: "LOAD_END" });
 
     } catch (error) {
       dispatch({ type: "LOAD_FAIL" });
+      console.log("error", error);
     }
   }
 
+  function doSort() {
+    setSort_commend(selected_sort.split(' ')[0]);
+    setMovieList(popMovie);
+    setMovieList(popMovie?.results.sort(function (a, b) {
+      if (selected_sort.includes("Asc")) {
+        return a[sort_commend] - b[sort_commend];
+      }
+      else if (selected_sort.includes("Desc")) {
+        return b[sort_commend] - a[sort_commend];
+      }
+    }));
 
-  console.log("popMovie", popMovie);
+  }
 
   useEffect(() => {
     getMovieData(activePage);
-  }, [activePage, text])
+    doSort();
+  }, [activePage, text, selected_sort, year_value, genre_value])
 
   return (
     <Container>
@@ -62,9 +81,25 @@ const Movies = () => {
           )
           : (
             <Col xs={8} className="movies_Card_List">
-              {popMovie?.results.map((movie) => (
-                <MoviesCard cardInfo={movie} />
-              ))}
+              {movieList === undefined
+                ? popMovie?.results.map((movie) => (
+                  <MoviesCard cardInfo={movie} />
+                ))
+                :
+                movieList?.map((movie) => (
+                  (movie.release_date.substr(0, 4) >= year_value[0] && movie.release_date.substr(0, 4) <= year_value[1]
+                    ? movie.genre_ids.filter((genreItem) => genreItem === genreList.filter((item) => item.name === genre_value)[0].id).length > 0
+                      ? <MoviesCard cardInfo={movie} />
+                      : ""
+                    : "")
+
+                ))
+              }
+
+              {/* {movieList?.map((movie) => (
+                     <MoviesCard cardInfo={movie} />
+                   ))
+                 } */}
               <div className='movies_Pagination_wrap'>
                 <Pagination
                   activePage={activePage}
@@ -83,4 +118,4 @@ const Movies = () => {
   )
 }
 
-export default Movies
+export default Movies;

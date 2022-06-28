@@ -8,7 +8,7 @@ import YouTube from 'react-youtube';
 const MovieDetailTrailerModal = (showModal) => {
     let { movieTrailer } = useSelector((state) => state.movieDetail);
 
-    console.log("Modal movieTrailer", movieTrailer);
+    //console.log("Modal movieTrailer", movieTrailer);
 
     return (
         <Modal

@@ -5,21 +5,26 @@ import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useDispatch } from 'react-redux/es/exports';
+import { filterAction } from "../redux/action/filteringAction"
 
 const MoviesFilter = () => {
 
     let [close, setClose] = useState(true);
     const { genreList } = useSelector((state) => state.movie);
-
-    const [year_value, setYear_value] = useState([0, 10]);
-    const [score_value, setScore_value] = useState([0, 10]);
+    let dispatch = useDispatch();
+    const [year_value, setYear_value] = useState([1990, 2022]);
+    let [genre_value, setGenre_value] = useState();
 
     const yearHandleChange = (event, newValue) => {
         setYear_value(newValue);
+        dispatch(filterAction.year_filter(year_value));
     };
-    const scoreHandleChange = (event, newValue) => {
-        setScore_value(newValue);
-    };
+
+    function selectGenre(event){
+        setGenre_value(event.target.innerHTML);
+        dispatch(filterAction.genre_filter(genre_value));
+    }
 
     const theme = createTheme({
         palette: {
@@ -28,9 +33,6 @@ const MoviesFilter = () => {
             },
         },
     });
-
-    console.log("genreList", genreList);
-
 
     return (
         <div className={close
@@ -59,20 +61,8 @@ const MoviesFilter = () => {
                                 onChange={yearHandleChange}
                                 valueLabelDisplay="auto"
                                 color="red"
-                            />
-                        </ThemeProvider>
-                    </Box>
-                </div>
-                <div className='score_filter under'>
-                    <div>IBM Score Filter</div>
-                    <div>From:{score_value[0]}-To:{score_value[1]}</div>
-                    <Box sx={{ width: 200 }} className="filter_range">
-                        <ThemeProvider theme={theme}>
-                            <Slider
-                                value={score_value}
-                                onChange={scoreHandleChange}
-                                valueLabelDisplay="auto"
-                                color="red"
+                                min={1990}
+                                max={2022}
                             />
                         </ThemeProvider>
                     </Box>
@@ -80,7 +70,7 @@ const MoviesFilter = () => {
                 <div className='genres_filter under'>
                     <div>Genres</div>
                     {genreList.map((item) => (
-                        <button className='genres_button'>{item.name}</button>
+                        <button className='genres_button' onClick={selectGenre}>{item.name}</button>
                     ))}
                 </div>
             </div>

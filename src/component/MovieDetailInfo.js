@@ -7,7 +7,7 @@ import MovieDetailTrailerModal from './MovieDetailTrailerModal';
 
 const MovieDetailInfo = ({ detailInfo, genreList }) => {
 
-    console.log("detailInfo", detailInfo);
+    //console.log("detailInfo", detailInfo);
 
     let [bgColor, setBgColor] = useState("white");
     const [modalShow, setModalShow] = useState(false);

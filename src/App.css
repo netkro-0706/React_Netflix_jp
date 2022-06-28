@@ -278,6 +278,40 @@ body {
     display: none;
 }
 
+.sort_button_wrap{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sort_button{
+    width: 150px;
+    color: white;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, red , black 60%);
+}
+.button_list{
+    width: 150px;
+    z-index: 10;
+}
+.button_list ul{
+    padding: 0;
+    background: linear-gradient(to bottom, red, black);
+}
+.button_list_off{
+    display: none;
+}
+.sort_list{
+    width: 150px;
+    height: 30px;
+    list-style: none;
+    color: white;
+    border: 1px solid black;
+}
+.sort_list:hover{
+    cursor: pointer;
+}
+
 /* MoviesFilter.js */
 .year_filter{
     height: 100px;
@@ -325,6 +359,9 @@ body {
 .card_top_poster{
     margin-right: 5px;
     margin-bottom: 5px;
+}
+.card_top_text{
+    width: 190px;
 }
 .card_top_text span{
     color: rgb(152, 175, 228);

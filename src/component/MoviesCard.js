@@ -8,7 +8,7 @@ import { faImdb } from '@fortawesome/free-brands-svg-icons';
 
 const MoviesCard = ({ cardInfo }) => {
     const { genreList } = useSelector((state) => state.movie);
-    console.log("cardInfo", cardInfo);
+    //console.log("cardInfo", cardInfo);
 
     let navigate = useNavigate();
     const goToDetail = () => {

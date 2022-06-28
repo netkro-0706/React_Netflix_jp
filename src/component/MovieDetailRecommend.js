@@ -4,7 +4,8 @@ import MovieCard from './MovieCard';
 
 const MovieDetailRecommend = ({recommendInfo}) => {
 
-  console.log("recommendInfo", recommendInfo);
+  // console.log("recommendInfo", recommendInfo);
+  
   return (
     <Container className='recommend_wrap'>
       {recommendInfo.results?.map((item)=>(
