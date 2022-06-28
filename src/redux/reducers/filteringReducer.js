@@ -1,5 +1,5 @@
 let initialState = {
-    year_value: "",
+    year_value: [1990, 2022],
     genre_value: "",
 }
 

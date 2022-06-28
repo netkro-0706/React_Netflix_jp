@@ -64,6 +64,8 @@ const Movies = () => {
   useEffect(() => {
     getMovieData(activePage);
     doSort();
+    console.log("movie", movieList);
+    console.log("year", year_value);
   }, [activePage, text, selected_sort, year_value, genre_value])
 
   return (
@@ -88,9 +90,11 @@ const Movies = () => {
                 :
                 movieList?.map((movie) => (
                   (movie.release_date.substr(0, 4) >= year_value[0] && movie.release_date.substr(0, 4) <= year_value[1]
-                    ? movie.genre_ids.filter((genreItem) => genreItem === genreList.filter((item) => item.name === genre_value)[0].id).length > 0
+                    ? genre_value === undefined || genre_value === ""
                       ? <MoviesCard cardInfo={movie} />
-                      : ""
+                      : movie.genre_ids?.filter((genreItem) => genreItem === genreList.filter((item) => item.name === genre_value)[0].id).length > 0
+                        ? <MoviesCard cardInfo={movie} />
+                        : ""
                     : "")
 
                 ))
