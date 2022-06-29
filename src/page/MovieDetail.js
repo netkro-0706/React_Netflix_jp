@@ -16,8 +16,6 @@ const MovieDetail = () => {
   const { genreList } = useSelector((state) => state.movie);
   let loading = useSelector((state) => state.load.loading);
 
-  //console.log("detail api", movieReview);
-
   useEffect(() => {
     dispatch(movieDetailAction.getDetail(movie_id));
   }, [])

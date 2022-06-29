@@ -7,8 +7,6 @@ import MovieDetailTrailerModal from './MovieDetailTrailerModal';
 
 const MovieDetailInfo = ({ detailInfo, genreList }) => {
 
-    //console.log("detailInfo", detailInfo);
-
     let [bgColor, setBgColor] = useState("white");
     const [modalShow, setModalShow] = useState(false);
 
@@ -16,7 +14,6 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
         bgColor === "white" ? setBgColor("#dd0000") : setBgColor("white");
     }
 
-    
     return (
         <Container className='info_all_wrap'>
             <Row>
