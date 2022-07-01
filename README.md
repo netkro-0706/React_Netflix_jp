@@ -6,7 +6,7 @@
 Demo: https://zesty-cascaron-1bbbcb.netlify.app/　　
 
 ## 開発目標  
-多様なAPIとライブラリを使いNetflixと同じWebを構築  
+Reactを理解してAPIとLibraryを使いNetflixと同じWebを構築  
 
 ## 使用技術　　
 HTML  
