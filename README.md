@@ -14,6 +14,8 @@ CSS
 Javascript  
    
 Library  
+ -React
+ -React-redux
  -Bootstrap  
  -Font Awesome  
  -MUI(https://mui.com/material-ui/getting-started/overview/)  
