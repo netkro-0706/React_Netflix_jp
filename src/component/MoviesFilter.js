@@ -23,7 +23,7 @@ const MoviesFilter = () => {
 
     function selectGenre(event){
         setGenre_value(event.target.innerHTML);
-        dispatch(filterAction.genre_filter(genre_value));
+        dispatch(filterAction.genre_filter(event.target.innerHTML));
     }
 
     const theme = createTheme({
