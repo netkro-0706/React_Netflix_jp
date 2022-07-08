@@ -7,6 +7,8 @@ import MovieDetailTrailerModal from './MovieDetailTrailerModal';
 
 const MovieDetailInfo = ({ detailInfo, genreList }) => {
 
+    console.log("detailInfo", detailInfo);
+
     let [bgColor, setBgColor] = useState("white");
     const [modalShow, setModalShow] = useState(false);
 
@@ -14,18 +16,25 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
         bgColor === "white" ? setBgColor("#dd0000") : setBgColor("white");
     }
 
+
     return (
         <Container className='info_all_wrap'>
             <Row>
                 <Col sx={4}>
-                    <img width={500} src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detailInfo.poster_path}`} alt="movie_poster"
-                        className='info_poster' />
+                    {detailInfo.poster_path
+                        ?
+                        <img width={500} src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detailInfo.poster_path}`} alt="movie_poster"
+                            className='info_poster' />
+                        : ""
+                    }
                 </Col>
                 <Col sx={4}>
                     <div className='info_genre_wrap'>
-                        {detailInfo.genres?.map((genre) => (
-                            <Badge className="info_genre_badge" bg="danger">{genreList.find((item) => item.id === genre.id).name}</Badge>
-                        ))}
+                        {
+                            detailInfo.genres?.map((genre) => (
+                                <Badge className="info_genre_badge" bg="danger">{genreList.find((item) => item.id === genre.id).name}</Badge>
+                            ))
+                        }
                     </div>
                     <h1 className='info_title'>{detailInfo.title}</h1>
                     <h3 className='info_tagline'>{detailInfo.tagline}</h3>
@@ -56,7 +65,7 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
                     />
                     <div>
                         <button className='info_fav' style={{ backgroundColor: bgColor }} onClick={putFav}>
-                            <FontAwesomeIcon icon={faHeart}/></button>
+                            <FontAwesomeIcon icon={faHeart} /></button>
                     </div>
                 </Col>
             </Row>

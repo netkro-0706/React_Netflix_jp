@@ -5,23 +5,30 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faImdb } from '@fortawesome/free-brands-svg-icons';
+import { withTheme } from '@emotion/react'
 
 const MovieCard = ({ item }) => {
 
-    const { genreList } = useSelector((state) => state.movie);
+    //console.log("MovieCard item", item);
 
+    const { genreList } = useSelector((state) => state.movie);
     let navigate = useNavigate();
 
     const goToDetail = () => {
         navigate(`/movies/${item.id}`);
     }
+    function imgUrl() {
+        if (item.backdrop_path !== null)
+            return "url(" + `https://www.themoviedb.org/t/p/w500_and_h282_face/${item.backdrop_path}` + ")"
+        else
+            return "";
+
+    }
 
     return (
         <div className='card home_card'
             style={{
-                backgroundImage:
-                    "url(" + `https://www.themoviedb.org/t/p/w500_and_h282_face/${item.backdrop_path}` + ")"
-            }}
+                backgroundImage: imgUrl() }}
             onClick={goToDetail}>
 
             <div className='overlay'>

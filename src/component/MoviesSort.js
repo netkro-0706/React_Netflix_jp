@@ -41,15 +41,16 @@ const MoviesSort = () => {
                     <button className='sort_button' onClick={() => setButtonToggle(true)}>{sortText}</button>
                     <div className={buttonToggle ? "button_list_on button_list" : "button_list_off"}>
                         <ul>
-                            <li className="sort_list" onClick={selectButton} value="none">none</li>
-                            <li className="sort_list" onClick={selectButton} value="popularity Desc">popularity(Desc)</li>
-                            <li className="sort_list" onClick={selectButton} value="popularity Asc">popularity(Asc)</li>
-                            <li className="sort_list" onClick={selectButton} value="release_date Desc">Release Day(Desc)</li>
-                            <li className="sort_list" onClick={selectButton} value="release_date Asc">Release Day(Asc)</li>
-                            <li className="sort_list" onClick={selectButton} value="vote_average Desc">Vote(Desc)</li>
-                            <li className="sort_list" onClick={selectButton} value="vote_average Asc">Vote(Asc)</li>
-                            <li className="sort_list" onClick={selectButton} value="revenue Desc">Revenue(Desc)</li>
-                            <li className="sort_list" onClick={selectButton} value="revenue Asc">Revenue(Asc)</li>
+                            <li className="sort_list" onClick={selectButton} value="">none</li>
+                            <li className="sort_list" onClick={selectButton} value="popularity.desc">popularity(Desc)</li>
+                            <li className="sort_list" onClick={selectButton} value="popularity.asc">popularity(Asc)</li>
+                            <li className="sort_list" onClick={selectButton} value="release_date.desc">Release Day(Desc)</li>
+                            <li className="sort_list" onClick={selectButton} value="release_date.asc">Release Day(Asc)</li>
+                            <li className="sort_list" onClick={selectButton} value="vote_average.desc">Vote(Desc)</li>
+                            <li className="sort_list" onClick={selectButton} value="vote_average.asc">Vote(Asc)</li>
+                            <li className="sort_list" onClick={selectButton} value="revenue.desc">Revenue(Desc)</li>
+                            <li className="sort_list" onClick={selectButton} value="revenue.asc">Revenue(Asc)</li>
+
                         </ul>
                     </div>
                 </div>

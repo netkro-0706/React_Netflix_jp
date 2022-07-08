@@ -14,17 +14,11 @@ const MoviesFilter = () => {
     const { genreList } = useSelector((state) => state.movie);
     let dispatch = useDispatch();
     const [year_value, setYear_value] = useState([1990, 2022]);
-    let [genre_value, setGenre_value] = useState();
 
     const yearHandleChange = (event, newValue) => {
         setYear_value(newValue);
         dispatch(filterAction.year_filter(year_value));
     };
-
-    function selectGenre(event){
-        setGenre_value(event.target.innerHTML);
-        dispatch(filterAction.genre_filter(event.target.innerHTML));
-    }
 
     const theme = createTheme({
         palette: {
@@ -70,7 +64,9 @@ const MoviesFilter = () => {
                 <div className='genres_filter under'>
                     <div>Genres</div>
                     {genreList.map((item) => (
-                        <button className='genres_button' onClick={selectGenre}>{item.name}</button>
+                        <button className='genres_button' onClick={(event)=>{dispatch(filterAction.genre_filter(event.target.innerHTML))}}>
+                            {item.name}
+                        </button>
                     ))}
                 </div>
             </div>

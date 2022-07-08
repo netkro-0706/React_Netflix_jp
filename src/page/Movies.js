@@ -14,11 +14,9 @@ const Movies = () => {
   let dispatch = useDispatch();
   let { text } = useSelector((state) => state.search);
   let [activePage, setActivePage] = useState(1);
-  let [popMovie, setPopMovie] = useState();
+  let [popMovie, setPopMovie] = useState(null);
   let loading = useSelector((state) => state.load.loading);
   let { selected_sort } = useSelector((state) => state.sort);
-  let [sort_commend, setSort_commend] = useState(selected_sort.split(' ')[0]);
-  let [movieList, setMovieList] = useState();
   let { year_value, genre_value } = useSelector((state) => state.filter);
   let { genreList } = useSelector((state) => state.movie)
 
@@ -33,11 +31,14 @@ const Movies = () => {
       let getData;
       if (text !== "") {
         getData = await api.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=${pageNum}&query=${text}`);
+      } else if (selected_sort !== "") {
+        getData = await api.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${selected_sort}&include_video=false&page=${pageNum}`);
       } else {
         getData = await api.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${pageNum}`);
       }
 
       setPopMovie(getData.data);
+      console.log("data", getData.data);
 
       dispatch({ type: "LOAD_END" });
 
@@ -47,23 +48,8 @@ const Movies = () => {
     }
   }
 
-  function doSort() {
-    setSort_commend(selected_sort.split(' ')[0]);
-    setMovieList(popMovie);
-    setMovieList(popMovie?.results.sort(function (a, b) {
-      if (selected_sort.includes("Asc")) {
-        return a[sort_commend] - b[sort_commend];
-      }
-      else if (selected_sort.includes("Desc")) {
-        return b[sort_commend] - a[sort_commend];
-      }
-    }));
-
-  }
-
   useEffect(() => {
     getMovieData(activePage);
-    doSort();
   }, [activePage, text, selected_sort, year_value, genre_value])
 
   return (
@@ -81,21 +67,17 @@ const Movies = () => {
           )
           : (
             <Col xs={8} className="movies_Card_List">
-              {movieList === undefined
-                ? popMovie?.results.map((movie) => (
-                  <MoviesCard cardInfo={movie} />
-                ))
-                :
-                movieList?.map((movie) => (
-                  (movie.release_date.substr(0, 4) >= year_value[0] && movie.release_date.substr(0, 4) <= year_value[1]
-                    ? genre_value === undefined || genre_value === ""
+              {popMovie?.results.map((movie) => (
+                (movie.release_date.substr(0, 4) >= year_value[0] && movie.release_date.substr(0, 4) <= year_value[1]
+                  ? genre_value === undefined || genre_value === ""
+                    ? <MoviesCard cardInfo={movie} />
+                    : movie.genre_ids?.filter((genreItem) => genreItem === genreList.filter((item) => item.name === genre_value)[0].id).length > 0
                       ? <MoviesCard cardInfo={movie} />
-                      : movie.genre_ids?.filter((genreItem) => genreItem === genreList.filter((item) => item.name === genre_value)[0].id).length > 0
-                        ? <MoviesCard cardInfo={movie} />
-                        : ""
-                    : "")
+                      : ""
+                  : "")
 
-                ))
+              ))
+
               }
               <div className='movies_Pagination_wrap'>
                 <Pagination
