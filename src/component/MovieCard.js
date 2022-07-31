@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
 import { faImdb } from '@fortawesome/free-brands-svg-icons';
-import { withTheme } from '@emotion/react'
 
 const MovieCard = ({ item }) => {
 

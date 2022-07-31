@@ -17,7 +17,7 @@ const MoviesCard = ({ cardInfo }) => {
 
     function imgUrl() {
         if (cardInfo.backdrop_path !== null) {
-            console.log("backdrop", cardInfo.backdrop_path);
+            //console.log("backdrop", cardInfo.backdrop_path);
             return "url(" + `https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${cardInfo.backdrop_path}` + ")"
         }
         else

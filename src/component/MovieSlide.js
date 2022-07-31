@@ -29,6 +29,8 @@ const MovieSlide = ({ movies }) => {
         }
     };
 
+    //console.log("movies", movies);
+
     return (
 
         <div>

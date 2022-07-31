@@ -7,7 +7,7 @@ import MovieDetailTrailerModal from './MovieDetailTrailerModal';
 
 const MovieDetailInfo = ({ detailInfo, genreList }) => {
 
-    console.log("detailInfo", detailInfo);
+    //console.log("detailInfo", detailInfo);
 
     let [bgColor, setBgColor] = useState("white");
     const [modalShow, setModalShow] = useState(false);
@@ -20,7 +20,7 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
     return (
         <Container className='info_all_wrap'>
             <Row>
-                <Col sx={4}>
+                <Col lg={{span:4, offset:0}} sm={{span:4, offset:2}} xs={{offset:0}}>
                     {detailInfo.poster_path
                         ?
                         <img width={500} src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detailInfo.poster_path}`} alt="movie_poster"
@@ -28,7 +28,7 @@ const MovieDetailInfo = ({ detailInfo, genreList }) => {
                         : ""
                     }
                 </Col>
-                <Col sx={4}>
+                <Col lg={{span:4, offset:3}} sm={{span:6, offset:3}} xs={{offset:1}}>
                     <div className='info_genre_wrap'>
                         {
                             detailInfo.genres?.map((genre) => (

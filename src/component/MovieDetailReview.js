@@ -3,6 +3,8 @@ import { Container } from 'react-bootstrap'
 
 const MovieDetailReview = ({ reviewInfo }) => {
 
+  //console.log("reviewInfo", reviewInfo.results);
+
   return (
     <Container className='review_wrap'>
       {reviewInfo.results?.map((item)=>(

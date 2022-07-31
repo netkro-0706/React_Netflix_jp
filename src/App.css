@@ -429,3 +429,9 @@ body {
 .movies_card:hover{
     transform: scale(1.05);
 }
+
+@media (max-width : 991.9px) {
+    .info_genre_wrap{
+        margin-top: 40px;
+    }
+}

@@ -8,6 +8,7 @@ import MoviesFilter from '../component/MoviesFilter';
 import { ClipLoader } from 'react-spinners';
 import api from '../redux/api';
 
+
 const Movies = () => {
 
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -38,7 +39,7 @@ const Movies = () => {
       }
 
       setPopMovie(getData.data);
-      console.log("data", getData.data);
+      //console.log("data", getData.data);
 
       dispatch({ type: "LOAD_END" });
 
@@ -55,7 +56,7 @@ const Movies = () => {
   return (
     <Container>
       <Row>
-        <Col xs={4}>
+        <Col lg={{span:3}} md={{span:4, offset:0}} sm={{offset:2}}>
           <MoviesSort />
           <MoviesFilter />
         </Col>
@@ -66,7 +67,7 @@ const Movies = () => {
             </div>
           )
           : (
-            <Col xs={8} className="movies_Card_List">
+            <Col lg={{span:8, offset:1}} md={{span:6, offset:1}} sm={{offset:2}} className="movies_Card_List">
               {popMovie?.results.map((movie) => (
                 (movie.release_date.substr(0, 4) >= year_value[0] && movie.release_date.substr(0, 4) <= year_value[1]
                   ? genre_value === undefined || genre_value === ""
